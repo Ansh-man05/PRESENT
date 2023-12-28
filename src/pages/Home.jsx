@@ -2,7 +2,7 @@ import { Suspense, useEffect, useRef, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import Loader  from "../components/Loader";
 import Homeinfo  from "../components/Homeinfo";
-import Island  from "../models/island";
+
 import Sky  from "../models/Sky";
 import Butterfly from "../models/butterfly";
 import Balloon from "../models/balloon"
@@ -37,7 +37,7 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
     } 
     return [screenScale, screenPosition, rotation];
   } 
-  const [islandScale, islandPosition] = adjustIslandForScreenSize();
+
  
 
   return (
@@ -84,14 +84,7 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
         
         <Balloon1 /> 
         <Sky isRotating={isRotating} />
-        <Island
-        isRotating={isRotating}
-        setIsRotating={setIsRotating}
-        setCurrentStage={setCurrentStage}
-        position={islandPosition}
-        rotation={[0.1, 4.7077, 0]}
-        scale={islandScale}
-          />
+       
           <Butterfly />
         <Balloon /> 
         <Balloon2 /> 
