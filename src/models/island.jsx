@@ -5,7 +5,7 @@ import { useGLTF } from "@react-three/drei";
 import { useFrame, useThree } from "@react-three/fiber";
 
 
-import islandScene from "../assets/3d/island.glb";
+import islandScene from "../assets/3d/untitled.glb";
 
 const Island= ({isRotating,
   setIsRotating,
@@ -16,7 +16,7 @@ const Island= ({isRotating,
   const islandRef = useRef();
   // Get access to the Three.js renderer and viewport
   const { gl, viewport } = useThree();
-  const { nodes, materials } = useGLTF(islandScene);
+  const { scene, animations } = useGLTF(islandScene);
 
   // Use a ref for the last mouse x position
   const lastX = useRef(0);
@@ -165,113 +165,9 @@ const Island= ({isRotating,
     }
   });
   return (
-    <a.group ref={islandRef} {...props} position={[0, -1.5, 0]} scale={[0.15, 0.15, 0.15]} >
-      <a.group rotation={[Math.PI / 2, 0, Math.PI/2]}>
-        <a.group rotation={[-Math.PI, 0, 0]} scale={0.01}>
-          <a.group rotation={[0, 0, -Math.PI / 2]} scale={100}>
-            <mesh
-              
-              
-              geometry={nodes.characters_STONE_a_0.geometry}
-              material={materials.STONE_a}
-            />
-            <mesh
-              
-              
-              geometry={nodes.characters_STONE_a_0_1.geometry}
-              material={materials.STONE_a}
-            />
-          </a.group>
-          <group rotation={[0, 0, -Math.PI / 2]} scale={100}>
-            <mesh
-              
-              
-              geometry={nodes.characters007_bush_0.geometry}
-              material={materials.bush}
-            />
-            <mesh
-              
-              
-              geometry={nodes.characters007_bush_0_1.geometry}
-              material={materials.bush}
-            />
-          </group>
-          <mesh
-            
-            
-            geometry={nodes.characters001_charcters_0.geometry}
-            material={materials.charcters}
-            rotation={[0, 0, -Math.PI / 2]}
-            scale={100}
-          />
-          <mesh
-            
-            
-            geometry={nodes.characters002_watermill_0.geometry}
-            material={materials.watermill}
-            rotation={[0, 0, -Math.PI / 2]}
-            scale={100}
-          />
-          <mesh
-            
-            
-            geometry={nodes.characters003_terrain_left_0.geometry}
-            material={materials.terrain_left}
-            rotation={[0, 0, -Math.PI / 2]}
-            scale={100}
-          />
-          <mesh
-            
-            
-            geometry={nodes.characters004_house_0.geometry}
-            material={materials.house}
-            rotation={[0, 0, -Math.PI / 2]}
-            scale={100}
-          />
-          <mesh
-            
-            
-            geometry={nodes.characters005_bridge_0.geometry}
-            material={materials.bridge}
-            rotation={[0, 0, -Math.PI / 2]}
-            scale={100}
-          />
-          <mesh
-            
-            
-            geometry={nodes.characters006_tree_0.geometry}
-            material={materials.tree}
-            rotation={[0, 0, -Math.PI / 2]}
-            scale={100}
-          />
-          <mesh
-            
-            
-            geometry={nodes.characters008_water_0.geometry}
-            material={materials.water}
-            rotation={[0, 0, -Math.PI / 2]}
-            scale={100}
-          />
-          <mesh
-            
-            
-            geometry={nodes.characters009_terrain_right_0.geometry}
-            material={materials.terrain_right}
-            rotation={[0, 0, -Math.PI / 2]}
-            scale={100}
-          />
-          <mesh
-            
-            
-            geometry={nodes.characters010_wheat_0.geometry}
-            material={materials.wheat}
-            rotation={[0, 0, -Math.PI / 2]}
-            scale={100}
-          />
-          
-        </a.group>
-      </a.group>
-    </a.group>
+    <mesh ref={islandRef} position={[0, -1.5, 0]} scale={[0.15, 0.15, 0.15]} >
+    <primitive object={scene} />
+    </mesh>
   );
 }
 
